@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import jp.co.aforce.entity.MembersBean;
 
-public class DAO {
+public class MembersDAO {
 	
 	public int insert(MembersBean members) throws SQLException, ClassNotFoundException {
 		int count = 0;
@@ -14,10 +14,7 @@ public class DAO {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("INSERT INTO members VALUES(?,?,?,?,?,?)")) {
 			
-			String number=members.getMember_no();
-			number="A"+ Timestamp;
-				
-			pstmt.setString(1, number);
+			pstmt.setString(1, members.getMember_no());
 			pstmt.setString(2, members.getName());
 			pstmt.setInt(3, members.getAge());
 			pstmt.setInt(4, members.getBirth_year());

@@ -5,10 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>会員情報新規登録画面</title>
+<style>
+body{
+text-align: center;
+}
+</style>
 </head>
 <body>
-	会員情報新規登録画面
-	<form action="" method="post">
+	会員情報新規登録画面<br>
+	<%
+	String message = (String) request.getAttribute("message");
+	if (message != null) {
+	%>
+
+	<%=(String) request.getAttribute("message")%>
+	<%
+	}
+	%>
+	<form action="../servlet/InsertFirstServlet" method="post">
 		名前<input type="text" name="name"><br> 
 		年齢<input type="text" name="age"><br>
 		 生年月日 

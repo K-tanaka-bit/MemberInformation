@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員情報変更</title>
+<title>Insert title here</title>
 </head>
 <body>
-会員情報変更
+該当する会員情報が見つかりません。
 </body>
 </html>

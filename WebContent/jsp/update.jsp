@@ -8,7 +8,7 @@
 </head>
 <body>
 <% 
-MembersBean members = (MembersBean)session.getAttribute("members");
+MembersBean members = (MembersBean)request.getAttribute("members");
 %>
 会員情報変更画面
 <form action ="../servlet/UpdateGetServlet" method="post">
@@ -54,10 +54,10 @@ MembersBean members = (MembersBean)session.getAttribute("members");
 			%>
 		</select><br>
 		
-		<input type="submit" value="登録">
+		<input type="submit" value="変更">
 	</form>
 	
-	<form action="menu.jsp" method="post">
+	<form action="../jsp/menu.jsp" method="post">
 		<input type="submit" value="戻る">
 	</form>
 

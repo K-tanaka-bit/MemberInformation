@@ -64,6 +64,7 @@ public class MembersDAO {
 			pstmt.setInt(3, members.getBirth_year());
 			pstmt.setInt(4, members.getBirth_month());
 			pstmt.setInt(5, members.getBirth_day());
+			pstmt.setString(6, members.getMember_no());
 
 			count = pstmt.executeUpdate();
 		}

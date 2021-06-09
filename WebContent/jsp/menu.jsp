@@ -16,7 +16,7 @@ text-align: center;
 <form action="insert.jsp" method="post">
 <input type="submit" value="会員情報新規登録">
 </form>
-<form action="edit.jsp"method="post">
+<form action="update.jsp"method="post">
 <input type="submit" value="会員情報変更">
 </form>
 <form action="delete.jsp"method="post">

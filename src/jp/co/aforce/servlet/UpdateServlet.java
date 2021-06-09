@@ -44,6 +44,7 @@ public class UpdateServlet extends HttpServlet{
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("../jsp/updateResult.jsp");
 		rd.forward(request, response);

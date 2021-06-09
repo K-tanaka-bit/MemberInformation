@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import jp.co.aforce.entity.MembersBean;
 import jp.co.aforce.model.MembersDAO;
@@ -30,8 +29,7 @@ public class UpdateGetServlet extends HttpServlet{
 			
 			if(members!=null) {
 				url ="../jsp/update.jsp";
-				HttpSession session =request.getSession();
-				session.setAttribute("members", members);
+				request.setAttribute("members", members);
 				}else {
 					
 					url ="../jsp/updateError.jsp";

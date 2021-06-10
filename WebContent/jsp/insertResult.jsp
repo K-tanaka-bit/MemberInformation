@@ -21,5 +21,8 @@
 	<%
 	}
 	%>
+	<form action="../jsp/menu.jsp" method="post">
+		<input type="submit" value="メニューに戻る">
+	</form>
 </body>
 </html>

@@ -13,25 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 import jp.co.aforce.entity.MembersBean;
 import jp.co.aforce.model.MembersDAO;
 
-@WebServlet(urlPatterns = { "/servlet/InsertSecondServlet" })
-public class InsertSecondServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/servlet/DeleteGetServlet" })
+public class DeleteGetServlet extends HttpServlet{
 	public void doPost(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		MembersBean members = (MembersBean) request.getAttribute("members");
-		int count = 0;
+		
 		MembersDAO dao = new MembersDAO();
+		String member_no = request.getParameter("member_no");
+		String url = null;
+		MembersBean members= new MembersBean();
 		
 		try {
-			count = dao.insert(members);
-			request.setAttribute("count", count);
+			members = dao.select(member_no);
+			
+			if(members!=null) {
+				url ="../jsp/delete.jsp";
+				request.setAttribute("members", members);
+				}else {
+					
+					url ="../jsp/updateError.jsp";
+				}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("../jsp/insertResult.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
+		
+		
 	}
 
 }

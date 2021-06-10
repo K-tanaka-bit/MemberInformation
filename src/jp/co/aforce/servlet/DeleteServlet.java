@@ -10,28 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jp.co.aforce.entity.MembersBean;
 import jp.co.aforce.model.MembersDAO;
 
-@WebServlet(urlPatterns = { "/servlet/InsertSecondServlet" })
-public class InsertSecondServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/servlet/DeleteServlet" })
+public class DeleteServlet extends HttpServlet {
 	public void doPost(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		MembersBean members = (MembersBean) request.getAttribute("members");
 		int count = 0;
-		MembersDAO dao = new MembersDAO();
+		String member_no = request.getParameter("member_no");
 		
 		try {
-			count = dao.insert(members);
+			MembersDAO dao = new MembersDAO();
+			count = dao.delete(member_no);
 			request.setAttribute("count", count);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
 
-		RequestDispatcher rd = request.getRequestDispatcher("../jsp/insertResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../jsp/deleteResult.jsp");
 		rd.forward(request, response);
 	}
+	
 
 }

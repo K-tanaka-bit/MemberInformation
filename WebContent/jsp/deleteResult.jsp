@@ -11,11 +11,11 @@
 	int count = (Integer) request.getAttribute("count");
 	if (count > 0) {
 	%>
-	変更に成功しました。
+	削除に成功しました。
 	<%
 	} else {
 	%>
-	変更に失敗しました。
+	削除に失敗しました。
 	<%
 	}
 	%>

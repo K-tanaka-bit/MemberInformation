@@ -57,7 +57,8 @@ public class MembersDAO {
 		int count = 0;
 
 		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("UPDATE  members SET name=?,age=?,birth_year=?,birth_month=?,birth_day=? WHERE member_no=?");) {
+				PreparedStatement pstmt = con.prepareStatement("UPDATE  members SET name=?,age=?,birth_year=?,"
+						+ "birth_month=?,birth_day=? WHERE member_no=?");) {
 
 			pstmt.setString(1, members.getName());
 			pstmt.setInt(2, members.getAge());
@@ -72,4 +73,16 @@ public class MembersDAO {
 
 	}
 
+	public int delete(String member_no)throws SQLException , ClassNotFoundException {
+		int count = 0;
+		
+		try(Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement("DELETE  FROM members WHERE  member_no=?");) {
+			
+			pstmt.setString(1, member_no);
+			
+			count=pstmt.executeUpdate();
+		}
+		return count;
+	}
 }

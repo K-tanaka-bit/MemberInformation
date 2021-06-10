@@ -7,7 +7,7 @@
 <title>会員情報変更</title>
 </head>
 <body>
-<% 
+	<% 
 MembersBean members = (MembersBean)request.getAttribute("members");
 %>
 会員情報変更画面

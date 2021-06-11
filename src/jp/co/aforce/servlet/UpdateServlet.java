@@ -18,35 +18,34 @@ public class UpdateServlet extends HttpServlet{
 	public void doPost(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String url =null;
 		int count=0;
 		
-		String member_no =request.getParameter("member_no");
-		String name = request.getParameter("name");
-		int age = Integer.parseInt(request.getParameter("age"));
-		int birth_year = Integer.parseInt(request.getParameter("birth_year"));
-		int birth_month = Integer.parseInt(request.getParameter("birth_month"));
-		int birth_day = Integer.parseInt(request.getParameter("birth_day"));
-		
+		if (request.getParameter("member_no").equals("")||request.getParameter("name").equals("") || request.getParameter("age").equals("") ||
+				request.getParameter("birth_year").equals("") || request.getParameter("birth_month").equals("") ||
+				request.getParameter("birth_day").equals("")) {
+			url = "../jsp/update.jsp";
+			request.setAttribute("message", "入力されていない項目があります。");
+		} else {
 		MembersBean members = new MembersBean();
-		
-		members.setMember_no(member_no);
-		members.setName(name);
-		members.setAge(age);
-		members.setBirth_year(birth_year);
-		members.setBirth_month(birth_month);
-		members.setBirth_day(birth_day);
+		members.setMember_no(request.getParameter("member_no"));
+		members.setName( request.getParameter("name"));
+		members.setAge(Integer.parseInt(request.getParameter("age")));
+		members.setBirth_year(Integer.parseInt(request.getParameter("birth_year")));
+		members.setBirth_month(Integer.parseInt(request.getParameter("birth_month")));
+		members.setBirth_day(Integer.parseInt(request.getParameter("birth_day")));
 		
 		try {
 			MembersDAO dao = new MembersDAO();
 			count = dao.update(members);
 			request.setAttribute("count", count);
+			url="../jsp/updateResult.jsp";
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
+		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("../jsp/updateResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 	

@@ -32,7 +32,7 @@ public class UpdateGetServlet extends HttpServlet{
 				request.setAttribute("members", members);
 				}else {
 					
-					url ="../jsp/updateError.jsp";
+					url ="../jsp/error.jsp";
 				}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

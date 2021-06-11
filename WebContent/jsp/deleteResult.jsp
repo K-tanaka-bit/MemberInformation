@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body{
+font-size:15pt;
+text-align: center;
+margin:150px 400px 
+}
+</style>
 </head>
 <body>
 <%

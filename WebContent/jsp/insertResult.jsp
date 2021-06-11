@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>登録結果</title>
+<style>
+body{
+font-size:15pt;
+text-align: center;
+margin:150px 400px 
+}
+</style>
 </head>
 <body>
 

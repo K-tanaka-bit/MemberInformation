@@ -25,10 +25,12 @@ public class InsertSecondServlet extends HttpServlet {
 		
 		try {
 			count = dao.insert(members);
-			request.setAttribute("count", count);
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			
 		}
+		request.setAttribute("count", count);
 
 		RequestDispatcher rd = request.getRequestDispatcher("../jsp/insertResult.jsp");
 		rd.forward(request, response);
